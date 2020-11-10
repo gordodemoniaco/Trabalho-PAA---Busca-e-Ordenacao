@@ -43,7 +43,6 @@ public class Main {
 
                     long tempo_sequencial = 0; // variavel pra armazenar a media do tempo da busca sequencial
                     long tempo_binaria = 0; // variavel pra armazenar a media do tempo da busca sequencial
-
                     // Busca Sequencial
                     for (int i = 1; i <= 50; i++) {
                         long tempo_contem = 0; // variavel pra armazenar o tempo demorado pra encontrar
@@ -104,8 +103,8 @@ public class Main {
                         tempo_binaria += tempo_contem + tempo_nao_contem; // acumulador de tempo
                     }
 
-                    //tempo_sequencial = tempo_sequencial/100; // media do tempo gasto
-                    //tempo_binaria = tempo_binaria/100; // media do tempo gasto
+                    // tempo_sequencial = tempo_sequencial/100; // media do tempo gasto
+                    // tempo_binaria = tempo_binaria/100; // media do tempo gasto
                     System.out.println("Tamanho do Vetor: " + n + " | Tempo de Criação: " + tempo_criacao
                             + " <> Tempo Médio da Busca Sequencial: " + tempo_sequencial
                             + " | Tempo Médio da Busca Binária: " + tempo_binaria);

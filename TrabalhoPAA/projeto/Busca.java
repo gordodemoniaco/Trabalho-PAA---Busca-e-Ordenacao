@@ -23,7 +23,7 @@ public class Busca {
     public static int buscaSequencial(int[] vetor, int n, int teste){
         int posicao=-1; // valor padrao para não achar a posição (-1)
         //Algoritmo comeca aqui
-        
+        AuxiliarVetor.wait(1); // tempo de espera padrao
         for(int i=0; i<n; i++){
             posicao = -1;   // garantia de valor padrao caso nao ache o elemento
             if(vetor[i]==teste){ // verifica se existe o elemento em cada posicao
@@ -38,8 +38,9 @@ public class Busca {
     }
     public static int buscaBinaria(int[] vetor, int n, int teste){
         int posicao=teste; // valor padrao para não achar a posição (-1)
+        AuxiliarVetor.wait(1); // tempo de espera padrão
         //Algoritmo comeca aqui
-        
+
         //System.out.println(n+" | "+posicao); // impressao de teste
         //Fim do Algoritmo
         return posicao;

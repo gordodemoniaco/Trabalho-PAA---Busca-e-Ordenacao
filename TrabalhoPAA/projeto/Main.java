@@ -50,23 +50,28 @@ public class Main {
 
                         // Busca pra elemento que contem
                         tempo_contem = System.currentTimeMillis(); // inicializa contador de tempo
-                        AuxiliarVetor.wait(1);
+                        // System.out.println("Início: "+System.currentTimeMillis()); // impressao de
+                        // teste
                         result_contem = Busca.buscaSequencial(vetor, n, r.nextInt(n)); // realiza a busca
                         if (result_contem < 0) { // verifica se não deu erro
                             System.err.println("Elemento Não Encontrado | Erro!"); // caso erro fecha o programa
                             System.exit(1);
                         }
                         tempo_contem = System.currentTimeMillis() - tempo_contem; // contabiliza o tempo gasto
+                        // System.out.println("Final"+System.currentTimeMillis()); // impressao de teste
+                        // Busca pra elemento que nao contem
 
-                        //Busca pra elemento que nao contem
                         tempo_nao_contem = System.currentTimeMillis(); // inicializa contador de tempo
-                        AuxiliarVetor.wait(1);
+                        // System.out.println("Início"+System.currentTimeMillis()); // impressao de
+                        // teste
                         result_nao_contem = Busca.buscaSequencial(vetor, n, -1); // realiza a busca
                         if (result_nao_contem >= 0) { // verifica se não deu erro
                             System.err.println("Elemento Encontrado | Erro!"); // caso erro fecha o programa
                             System.exit(1);
                         }
                         tempo_nao_contem = System.currentTimeMillis() - tempo_nao_contem; // contabiliza o tempo gasto
+                        // System.out.println("Final: "+System.currentTimeMillis()); // impressao de
+                        // teste
 
                         tempo_sequencial += tempo_contem + tempo_nao_contem; // acumulador de tempo
                     }
@@ -78,7 +83,6 @@ public class Main {
 
                         // Busca pra elemento que contem
                         tempo_contem = System.currentTimeMillis(); // inicializa contador de tempo
-                        AuxiliarVetor.wait(1);
                         result_contem = Busca.buscaBinaria(vetor, n, r.nextInt(n)); // realiza a busca
                         if (result_contem < 0) { // verifica se não deu erro
                             System.err.println("Elemento Não Encontrado | Erro!"); // caso erro fecha o programa
@@ -87,8 +91,8 @@ public class Main {
                         tempo_contem = System.currentTimeMillis() - tempo_contem; // contabiliza o tempo gasto
 
                         // Busca pra elemento que nao contem
+
                         tempo_nao_contem = System.currentTimeMillis(); // inicializa contador de tempo
-                        AuxiliarVetor.wait(1);
                         result_nao_contem = Busca.buscaBinaria(vetor, n, -1); // realiza a busca
                         if (result_nao_contem >= 0) { // verifica se não deu erro
                             System.err.println("Elemento Encontrado | Erro!"); // caso erro fecha o programa

@@ -43,6 +43,7 @@ public class Main {
                     long tempo_sequencial = 0; // variavel pra armazenar a media do tempo da busca sequencial
                     long tempo_binaria = 0; // variavel pra armazenar a media do tempo da busca sequencial
                     int teste = r.nextInt(n); // variavel que paroniza um numero pertencente aleatorio
+
                     // Busca Sequencial
                     for (int i = 1; i <= 50; i++) {
                         long tempo_contem = 0; // variavel pra armazenar o tempo demorado pra encontrar
@@ -56,10 +57,9 @@ public class Main {
                             System.exit(1);
                         }
                         tempo_contem = System.currentTimeMillis() - tempo_contem; // contabiliza o tempo gasto
+
                         // Busca pra elemento que nao contem
-
                         tempo_nao_contem = System.currentTimeMillis(); // inicializa contador de tempo
-
                         result_nao_contem = Busca.buscaSequencial(vetor, n, -1); // realiza a busca
                         if (result_nao_contem >= 0) { // verifica se não deu erro
                             System.err.println("Elemento Encontrado | Erro!"); // caso erro fecha o programa
@@ -85,7 +85,6 @@ public class Main {
                         tempo_contem = System.currentTimeMillis() - tempo_contem; // contabiliza o tempo gasto
 
                         // Busca pra elemento que nao contem
-
                         tempo_nao_contem = System.currentTimeMillis(); // inicializa contador de tempo
                         result_nao_contem = Busca.buscaBinaria(vetor, n, -1); // realiza a busca
                         if (result_nao_contem >= 0) { // verifica se não deu erro

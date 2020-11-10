@@ -29,19 +29,20 @@ public class Main {
         switch (opFuncao) {
             case 1: {
                 for (int k = 1; k <= x; k++) {
-                    //Criação de vetor
-                    long tempo_criacao = System.currentTimeMillis(); // varaivel pra armazenar o tempo de criacao do vetor
+                    // Criação de vetor
+                    long tempo_criacao = System.currentTimeMillis(); // varaivel pra armazenar o tempo de criacao do
+                                                                     // vetor
                     int n = k * tamanho_base; // tamanho do vetor
                     int[] vetor = new int[n]; // instancia do vetor
                     vetor = AuxiliarVetor.criarVetor(n); // cria um vetor
-                    tempo_criacao = System.currentTimeMillis() - tempo_criacao; // contabiliza o tempo de criacao do vetor
+                    tempo_criacao = System.currentTimeMillis() - tempo_criacao; // contabiliza o tempo de criacao do
+                                                                                // vetor
 
                     int result_contem; // resultado da posicao onde o elemento foi encontrado
                     int result_nao_contem; // deve retornar -1, ja q nao é encontrado
 
                     long tempo_sequencial = 0; // variavel pra armazenar a media do tempo da busca sequencial
                     long tempo_binaria = 0; // variavel pra armazenar a media do tempo da busca sequencial
-                    
 
                     // Busca Sequencial
                     for (int i = 1; i <= 50; i++) {
@@ -50,25 +51,28 @@ public class Main {
 
                         // Busca pra elemento que contem
                         tempo_contem = System.currentTimeMillis(); // inicializa contador de tempo
-                        //System.out.println("Início: "+System.currentTimeMillis()); // impressao de teste
+                        // System.out.println("Início: "+System.currentTimeMillis()); // impressao de
+                        // teste
                         result_contem = Busca.buscaSequencial(vetor, n, r.nextInt(n)); // realiza a busca
                         if (result_contem < 0) { // verifica se não deu erro
                             System.err.println("Elemento Não Encontrado | Erro!"); // caso erro fecha o programa
                             System.exit(1);
                         }
                         tempo_contem = System.currentTimeMillis() - tempo_contem; // contabiliza o tempo gasto
-                        //System.out.println("Final"+System.currentTimeMillis()); // impressao de teste
+                        // System.out.println("Final"+System.currentTimeMillis()); // impressao de teste
                         // Busca pra elemento que nao contem
 
                         tempo_nao_contem = System.currentTimeMillis(); // inicializa contador de tempo
-                        //System.out.println("Início"+System.currentTimeMillis()); // impressao de teste
+                        // System.out.println("Início"+System.currentTimeMillis()); // impressao de
+                        // teste
                         result_nao_contem = Busca.buscaSequencial(vetor, n, -1); // realiza a busca
                         if (result_nao_contem >= 0) { // verifica se não deu erro
                             System.err.println("Elemento Encontrado | Erro!"); // caso erro fecha o programa
                             System.exit(1);
                         }
                         tempo_nao_contem = System.currentTimeMillis() - tempo_nao_contem; // contabiliza o tempo gasto
-                        //System.out.println("Final: "+System.currentTimeMillis()); // impressao de teste
+                        // System.out.println("Final: "+System.currentTimeMillis()); // impressao de
+                        // teste
 
                         tempo_sequencial += tempo_contem + tempo_nao_contem; // acumulador de tempo
                     }
@@ -110,39 +114,39 @@ public class Main {
             }
                 break;
             case 2: {
-                for(int k=1; k<=x; k++){
-                    //Criação de vetor
-                    long tempo_criacao = System.currentTimeMillis(); // varaivel pra armazenar o tempo de criacao do vetor
+                for (int k = 1; k <= x; k++) {
+                    // Criação de vetor
+                    long tempo_criacao = System.currentTimeMillis(); // varaivel pra armazenar o tempo de criacao do
+                                                                     // vetor
                     int n = k * tamanho_base; // tamanho do vetor
                     int[] vetor = new int[n]; // instancia do vetor
                     vetor = AuxiliarVetor.criarVetor(n); // cria um vetor
-                    tempo_criacao = System.currentTimeMillis() - tempo_criacao; // contabiliza o tempo de criacao do vetor
+                    tempo_criacao = System.currentTimeMillis() - tempo_criacao; // contabiliza o tempo de criacao do
+                                                                                // vetor
 
-                    //Selection Sort
+                    // Selection Sort
                     long tempo_selection = Ordenacao.ordenaSelection(vetor, n);
 
-                    //Insertion Sort
+                    // Insertion Sort
                     long tempo_insertion = Ordenacao.ordenaInsertion(vetor, n);
 
-                    //Bubble Sort
+                    // Bubble Sort
                     long tempo_bubble = Ordenacao.ordenaBubble(vetor, n);
 
-                    //Merge Sort
+                    // Merge Sort
                     long tempo_merge = Ordenacao.ordenaMerge(vetor, n);
 
                     // Quick Sort
                     long tempo_quick = Ordenacao.ordenaQuick(vetor, n);
 
                     System.out.println("Tamanho do Vetor: " + n + " | Tempo de Criação: " + tempo_criacao);
-                    System.out.println("Tempo <"+Ordenacao.selection+">: "+tempo_selection);
-                    System.out.println("Tempo <"+Ordenacao.insertion+">: "+tempo_insertion);
-                    System.out.println("Tempo <"+Ordenacao.bubble+">: "+tempo_bubble);
-                    System.out.println("Tempo <"+Ordenacao.merge+">: "+tempo_merge);
-                    System.out.println("Tempo <"+Ordenacao.quick+">: "+tempo_quick);
+                    System.out.println("Tempo <" + Ordenacao.selection + ">: " + tempo_selection);
+                    System.out.println("Tempo <" + Ordenacao.insertion + ">: " + tempo_insertion);
+                    System.out.println("Tempo <" + Ordenacao.bubble + ">: " + tempo_bubble);
+                    System.out.println("Tempo <" + Ordenacao.merge + ">: " + tempo_merge);
+                    System.out.println("Tempo <" + Ordenacao.quick + ">: " + tempo_quick);
 
                 }
-                
-
 
             }
                 break;

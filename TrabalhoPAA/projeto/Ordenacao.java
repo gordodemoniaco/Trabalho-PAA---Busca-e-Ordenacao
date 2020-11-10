@@ -33,53 +33,53 @@ public class Ordenacao {
     }
 
     public static long ordenaSelection(int[] vetor, int n) {
-        AuxiliarVetor.wait(1); //tempo de espera padrao
+        AuxiliarVetor.wait(1); // tempo de espera padrao
         long tempo = System.currentTimeMillis();
-        //Algoritmo comeca aqui
-        
-        //Fim do Algoritmo
+        // Algoritmo comeca aqui
+
+        // Fim do Algoritmo
         tempo = System.currentTimeMillis() - tempo;
         return tempo;
     }
 
     public static long ordenaInsertion(int[] vetor, int n) {
-        AuxiliarVetor.wait(1); //tempo de espera padrao
+        AuxiliarVetor.wait(1); // tempo de espera padrao
         long tempo = System.currentTimeMillis();
-        //Algoritmo comeca aqui
+        // Algoritmo comeca aqui
 
-        //Fim do Algoritmo
+        // Fim do Algoritmo
         tempo = System.currentTimeMillis() - tempo;
         return tempo;
     }
 
     public static long ordenaBubble(int[] vetor, int n) {
-        AuxiliarVetor.wait(1); //tempo de espera padrao
+        AuxiliarVetor.wait(1); // tempo de espera padrao
         long tempo = System.currentTimeMillis();
-        //Algoritmo comeca aqui
-        
-        //Fim do Algoritmo
+        // Algoritmo comeca aqui
+
+        // Fim do Algoritmo
         tempo = System.currentTimeMillis() - tempo;
         return tempo;
 
     }
 
     public static long ordenaMerge(int[] vetor, int n) {
-        AuxiliarVetor.wait(1); //tempo de espera padrao
+        AuxiliarVetor.wait(1); // tempo de espera padrao
         long tempo = System.currentTimeMillis();
-        //Algoritmo comeca aqui
+        // Algoritmo comeca aqui
 
-        //Fim do Algoritmo
+        // Fim do Algoritmo
         tempo = System.currentTimeMillis() - tempo;
         return tempo;
 
     }
 
     public static long ordenaQuick(int[] vetor, int n) {
-        AuxiliarVetor.wait(1); //tempo de espera padrao
+        AuxiliarVetor.wait(1); // tempo de espera padrao
         long tempo = System.currentTimeMillis();
-        //Algoritmo comeca aqui
+        // Algoritmo comeca aqui
 
-        //Fim do Algoritmo
+        // Fim do Algoritmo
         tempo = System.currentTimeMillis() - tempo;
         return tempo;
     }

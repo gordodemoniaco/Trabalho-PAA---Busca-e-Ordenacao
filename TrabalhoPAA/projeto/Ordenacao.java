@@ -9,26 +9,73 @@ public class Ordenacao {
 
     public static String printOpOrdenacao(int opOrdenacao) {
         String tipo_ordenacao = new String();
-        switch (opOrdenacao){
+        switch (opOrdenacao) {
             case 1:
                 tipo_ordenacao = selection;
-            break;
+                break;
             case 2:
                 tipo_ordenacao = insertion;
-            break;
+                break;
             case 3:
                 tipo_ordenacao = bubble;
-            break;
+                break;
             case 4:
                 tipo_ordenacao = merge;
-            break;
+                break;
             case 5:
                 tipo_ordenacao = quick;
-            break;
+                break;
             default:
                 tipo_ordenacao = "Opção Inválida!";
-            break;
+                break;
         }
-		return tipo_ordenacao;
+        return tipo_ordenacao;
+    }
+
+    public static long ordenaSelection(int[] vetor, int n) {
+        long tempo = System.currentTimeMillis();
+        //Algoritmo comeca aqui
+        AuxiliarVetor.wait(1);
+        //Fim do Algoritmo
+        tempo = System.currentTimeMillis() - tempo;
+        return tempo;
+    }
+
+    public static long ordenaInsertion(int[] vetor, int n) {
+        long tempo = System.currentTimeMillis();
+        //Algoritmo comeca aqui
+        AuxiliarVetor.wait(1);
+        //Fim do Algoritmo
+        tempo = System.currentTimeMillis() - tempo;
+        return tempo;
+    }
+
+    public static long ordenaBubble(int[] vetor, int n) {
+        long tempo = System.currentTimeMillis();
+        //Algoritmo comeca aqui
+        AuxiliarVetor.wait(1);
+        //Fim do Algoritmo
+        tempo = System.currentTimeMillis() - tempo;
+        return tempo;
+
+    }
+
+    public static long ordenaMerge(int[] vetor, int n) {
+        long tempo = System.currentTimeMillis();
+        //Algoritmo comeca aqui
+        AuxiliarVetor.wait(1);
+        //Fim do Algoritmo
+        tempo = System.currentTimeMillis() - tempo;
+        return tempo;
+
+    }
+
+    public static long ordenaQuick(int[] vetor, int n) {
+        long tempo = System.currentTimeMillis();
+        //Algoritmo comeca aqui
+        AuxiliarVetor.wait(1);
+        //Fim do Algoritmo
+        tempo = System.currentTimeMillis() - tempo;
+        return tempo;
     }
 }

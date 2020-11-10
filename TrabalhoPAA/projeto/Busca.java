@@ -21,10 +21,19 @@ public class Busca {
 		return tipo_busca;
     }
     public static int buscaSequencial(int[] vetor, int n, int teste){
-        int posicao=1; // valao padrao para não achar a posição (-1)
-        //
+        int posicao=teste; // valor padrao para não achar a posição (-1)
+        //Algoritmo comeca aqui
+        AuxiliarVetor.wait(1);
+        //Fim do Algoritmo
         return posicao;
 
+    }
+    public static int buscaBinaria(int[] vetor, int n, int teste){
+        int posicao=teste; // valor padrao para não achar a posição (-1)
+        //Algoritmo comeca aqui
+        AuxiliarVetor.wait(1);
+        //Fim do Algoritmo
+        return posicao;
     }
 
 }

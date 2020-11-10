@@ -21,9 +21,17 @@ public class Busca {
 		return tipo_busca;
     }
     public static int buscaSequencial(int[] vetor, int n, int teste){
-        int posicao=teste; // valor padrao para não achar a posição (-1)
+        int posicao=-1; // valor padrao para não achar a posição (-1)
         //Algoritmo comeca aqui
-        AuxiliarVetor.wait(1);
+        
+        for(int i=0; i<n; i++){
+            posicao = -1;   // garantia de valor padrao caso nao ache o elemento
+            if(vetor[i]==teste){ // verifica se existe o elemento em cada posicao
+                posicao = i;    // se existir, captura a posicao
+                break;
+            }  
+        }
+        //System.out.println(n+" | "+posicao); // impressao de teste
         //Fim do Algoritmo
         return posicao;
 
@@ -31,9 +39,9 @@ public class Busca {
     public static int buscaBinaria(int[] vetor, int n, int teste){
         int posicao=teste; // valor padrao para não achar a posição (-1)
         //Algoritmo comeca aqui
-        AuxiliarVetor.wait(1);
+        
+        //System.out.println(n+" | "+posicao); // impressao de teste
         //Fim do Algoritmo
         return posicao;
     }
-
 }

@@ -36,10 +36,8 @@ public class Main {
                     vetor = AuxiliarVetor.criarVetor(n); // cria um vetor
                     tempo_criacao = System.currentTimeMillis() - tempo_criacao; // contabiliza o tempo de criacao do vetor
 
-                    int nao_contem = -1; // valor que nao contem dentro do vetor
-                    int contem = r.nextInt(n); // valor aleatório que contem dentro do vetor
-                    int result_contem = nao_contem; // resultado da posicao onde o elemento foi encontrado
-                    int result_nao_contem = contem; // deve retornar -1, ja q nao é encontrado
+                    int result_contem; // resultado da posicao onde o elemento foi encontrado
+                    int result_nao_contem; // deve retornar -1, ja q nao é encontrado
 
                     long tempo_sequencial = 0; // variavel pra armazenar a media do tempo da busca sequencial
                     long tempo_binaria = 0; // variavel pra armazenar a media do tempo da busca sequencial
@@ -52,22 +50,25 @@ public class Main {
 
                         // Busca pra elemento que contem
                         tempo_contem = System.currentTimeMillis(); // inicializa contador de tempo
-                        result_contem = Busca.buscaSequencial(vetor, n, contem); // realiza a busca
+                        //System.out.println("Início: "+System.currentTimeMillis()); // impressao de teste
+                        result_contem = Busca.buscaSequencial(vetor, n, r.nextInt(n)); // realiza a busca
                         if (result_contem < 0) { // verifica se não deu erro
                             System.err.println("Elemento Não Encontrado | Erro!"); // caso erro fecha o programa
                             System.exit(1);
                         }
                         tempo_contem = System.currentTimeMillis() - tempo_contem; // contabiliza o tempo gasto
-
+                        //System.out.println("Final"+System.currentTimeMillis()); // impressao de teste
                         // Busca pra elemento que nao contem
 
                         tempo_nao_contem = System.currentTimeMillis(); // inicializa contador de tempo
-                        result_nao_contem = Busca.buscaSequencial(vetor, n, nao_contem); // realiza a busca
+                        //System.out.println("Início"+System.currentTimeMillis()); // impressao de teste
+                        result_nao_contem = Busca.buscaSequencial(vetor, n, -1); // realiza a busca
                         if (result_nao_contem >= 0) { // verifica se não deu erro
                             System.err.println("Elemento Encontrado | Erro!"); // caso erro fecha o programa
                             System.exit(1);
                         }
                         tempo_nao_contem = System.currentTimeMillis() - tempo_nao_contem; // contabiliza o tempo gasto
+                        //System.out.println("Final: "+System.currentTimeMillis()); // impressao de teste
 
                         tempo_sequencial += tempo_contem + tempo_nao_contem; // acumulador de tempo
                     }
@@ -79,7 +80,7 @@ public class Main {
 
                         // Busca pra elemento que contem
                         tempo_contem = System.currentTimeMillis(); // inicializa contador de tempo
-                        result_contem = Busca.buscaBinaria(vetor, n, contem); // realiza a busca
+                        result_contem = Busca.buscaBinaria(vetor, n, r.nextInt(n)); // realiza a busca
                         if (result_contem < 0) { // verifica se não deu erro
                             System.err.println("Elemento Não Encontrado | Erro!"); // caso erro fecha o programa
                             System.exit(1);
@@ -89,7 +90,7 @@ public class Main {
                         // Busca pra elemento que nao contem
 
                         tempo_nao_contem = System.currentTimeMillis(); // inicializa contador de tempo
-                        result_nao_contem = Busca.buscaBinaria(vetor, n, nao_contem); // realiza a busca
+                        result_nao_contem = Busca.buscaBinaria(vetor, n, -1); // realiza a busca
                         if (result_nao_contem >= 0) { // verifica se não deu erro
                             System.err.println("Elemento Encontrado | Erro!"); // caso erro fecha o programa
                             System.exit(1);

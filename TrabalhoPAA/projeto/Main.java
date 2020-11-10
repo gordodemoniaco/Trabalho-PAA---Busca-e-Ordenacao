@@ -74,7 +74,7 @@ public class Main {
                         // System.out.println("Final: "+System.currentTimeMillis()); // impressao de
                         // teste
 
-                        tempo_sequencial += tempo_contem + tempo_nao_contem; // acumulador de tempo
+                        tempo_sequencial = tempo_sequencial + tempo_contem + tempo_nao_contem; // acumulador de tempo
                     }
 
                     // Busca Binaria
@@ -101,11 +101,11 @@ public class Main {
                         }
                         tempo_nao_contem = System.currentTimeMillis() - tempo_nao_contem; // contabiliza o tempo gasto
 
-                        tempo_binaria += tempo_contem + tempo_nao_contem; // acumulador de tempo
+                        tempo_binaria = tempo_binaria + tempo_contem + tempo_nao_contem; // acumulador de tempo
                     }
 
-                    tempo_sequencial = tempo_sequencial / 100; // media do tempo gasto
-                    tempo_binaria = tempo_binaria / 100; // media do tempo gasto
+                    tempo_sequencial = tempo_sequencial; // media do tempo gasto
+                    tempo_binaria = tempo_binaria; // media do tempo gasto
                     System.out.println("Tamanho do Vetor: " + n + " | Tempo de Criação: " + tempo_criacao
                             + " <> Tempo Médio da Busca Sequencial: " + tempo_sequencial
                             + " | Tempo Médio da Busca Binária: " + tempo_binaria);

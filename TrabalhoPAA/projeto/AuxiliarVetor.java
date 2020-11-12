@@ -32,7 +32,7 @@ public class AuxiliarVetor {
             return "Opção Inválida! Escolha dentre as opções abaixo";
     }
 
-    public static void wait(int ms) {
+    public static void wait(int ms) { // Delay
         try {
             Thread.sleep(ms);
         } catch (InterruptedException ex) {

@@ -7,8 +7,8 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) throws IOException, InterruptedException {
-        final int tamanho_base = 500000; // tamanho_base dos vetores
-        final int tamanho_max = 10000000; // tamanho maximo
+        final int tamanho_base = 500; // tamanho_base dos vetores
+        final int tamanho_max = 10000; // tamanho maximo
         int opFuncao = 0; // opcao de execucao do sistema
         Scanner entrada = new Scanner(System.in); // entrada do teclado
         boolean verify = true;
@@ -30,8 +30,7 @@ public class Main {
             case 1: {
                 for (int k = 1; k <= x; k++) {
                     // Criação de vetor
-                    long tempo_criacao = System.currentTimeMillis(); // varaivel pra armazenar o tempo de criacao do
-                                                                     // vetor
+                    long tempo_criacao = System.currentTimeMillis(); // varaivel pra armazenar o tempo de criacao
                     int n = k * tamanho_base; // tamanho do vetor
                     int[] vetor = new int[n]; // instancia do vetor
                     vetor = AuxiliarVetor.criarVetor(n); // cria um vetor
@@ -108,13 +107,11 @@ public class Main {
             case 2: {
                 for (int k = 1; k <= x; k++) {
                     // Criação de vetor
-                    long tempo_criacao = System.currentTimeMillis(); // varaivel pra armazenar o tempo de criacao do
-                                                                     // vetor
+                    long tempo_criacao = System.currentTimeMillis(); // varaivel pra armazenar o tempo de criacao
                     int n = k * tamanho_base; // tamanho do vetor
                     int[] vetor = new int[n]; // instancia do vetor
                     vetor = AuxiliarVetor.criarVetor(n); // cria um vetor
-                    tempo_criacao = System.currentTimeMillis() - tempo_criacao; // contabiliza o tempo de criacao do
-                                                                                // vetor
+                    tempo_criacao = System.currentTimeMillis() - tempo_criacao; // contabiliza o tempo de criacao
 
                     // Selection Sort
                     long tempo_selection = Ordenacao.ordenaSelection(vetor, n);
@@ -123,7 +120,7 @@ public class Main {
                     long tempo_insertion = Ordenacao.ordenaInsertion(vetor, n);
 
                     // Bubble Sort
-                    long tempo_bubble = Ordenacao.ordenaBubble(vetor, n);
+                    long tempo_bubble = Ordenacao.ordenaBubble(vetor, n);   
 
                     // Merge Sort
                     long tempo_merge = Ordenacao.ordenaMerge(vetor, n);
@@ -131,6 +128,7 @@ public class Main {
                     // Quick Sort
                     long tempo_quick = Ordenacao.ordenaQuick(vetor, n);
 
+                    // Impressão de verificação
                     System.out.println("Tamanho do Vetor: " + n + " | Tempo de Criação: " + tempo_criacao);
                     System.out.println("Tempo <" + Ordenacao.selection + ">: " + tempo_selection);
                     System.out.println("Tempo <" + Ordenacao.insertion + ">: " + tempo_insertion);
@@ -143,7 +141,7 @@ public class Main {
             }
                 break;
             default:
-                System.out.println("Programa Encerrado! Opções Inválidas");
+                System.out.println("Programa Encerrado! Opções Inválidas"); // Caso opçao escolhida seja errada.
                 break;
         }
         entrada.close();

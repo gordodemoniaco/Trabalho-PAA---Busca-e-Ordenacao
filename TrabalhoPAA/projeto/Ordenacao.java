@@ -32,81 +32,80 @@ public class Ordenacao {
         return tipo_ordenacao;
     }
 
-    public static long ordenaSelection(int[] vetor, int n) {
+    public static long ordenaSelection(int[] vetor, int n) { // SelectionSort
         AuxiliarVetor.wait(1); // tempo de espera padrao
         long tempo = System.currentTimeMillis();
         // Algoritmo comeca aqui
 
         // Fim do Algoritmo
-        tempo = System.currentTimeMillis() - tempo;
+        tempo = System.currentTimeMillis() - tempo; // contabilizaçao do tempo
         return tempo;
     }
 
-    public static long ordenaInsertion(int[] vetor, int n) {
+    public static long ordenaInsertion(int[] vetor, int n) { // InsertionSort
         AuxiliarVetor.wait(1); // tempo de espera padrao
-        long tempo = System.currentTimeMillis();
+        long tempo = System.currentTimeMillis(); // inicializa contabilizaçao do tempo
         // Algoritmo comeca aqui
 
         // Fim do Algoritmo
-        tempo = System.currentTimeMillis() - tempo;
+        tempo = System.currentTimeMillis() - tempo; // contabilizaçao do tempo
         return tempo;
     }
 
-    public static long ordenaBubble(int[] vetor, int n) {
+    public static long ordenaBubble(int[] vetor, int n) { // BubbleSort
         AuxiliarVetor.wait(1); // tempo de espera padrao
-        long tempo = System.currentTimeMillis();
+        long tempo = System.currentTimeMillis(); // inicializa contabilizaçao do tempo
         // Algoritmo comeca aqui
         int x = n;
-        for(int i=0; i<n; i++){
-            for(int k=1; k<x; k++){
-                int aux = vetor[k-1];
-                if(aux>vetor[k]){
-                    vetor[k-1] = vetor[k];
+        for (int i = 0; i < n; i++) {
+            for (int k = 1; k < x; k++) {
+                int aux = vetor[k - 1];
+                if (aux > vetor[k]) {
+                    vetor[k - 1] = vetor[k];
                     vetor[k] = aux;
                 }
             }
             x--;
         }
         // Fim do Algoritmo
-        tempo = System.currentTimeMillis() - tempo;
-        if(!verificaOrdenacao(vetor, n)){
+        tempo = System.currentTimeMillis() - tempo; // contabilizaçao do tempo
+        if (!verificaOrdenacao(vetor, n)) { // se a ordenaçao do vetor estiver errada, sai do programa com erro
             System.err.println("Erro de ordenacao");
             System.exit(1);
         }
-        if(verificaOrdenacao(vetor, n))
-            System.out.println("Ordenação OK");
+        System.out.println(bubble + " | Ordenação OK!"); // Impressão de verificaçao
         return tempo;
-
     }
 
-    public static long ordenaMerge(int[] vetor, int n) {
+    public static long ordenaMerge(int[] vetor, int n) { // MergeSort
         AuxiliarVetor.wait(1); // tempo de espera padrao
-        long tempo = System.currentTimeMillis();
+        long tempo = System.currentTimeMillis(); // inicializa contabilizaçao do tempo
         // Algoritmo comeca aqui
 
         // Fim do Algoritmo
-        tempo = System.currentTimeMillis() - tempo;
+        tempo = System.currentTimeMillis() - tempo; // contabilizaçao do tempo
         return tempo;
 
     }
 
-    public static long ordenaQuick(int[] vetor, int n) {
+    public static long ordenaQuick(int[] vetor, int n) { // QuickSort
         AuxiliarVetor.wait(1); // tempo de espera padrao
-        long tempo = System.currentTimeMillis();
+        long tempo = System.currentTimeMillis(); // inicializa contabilizaçao do tempo
         // Algoritmo comeca aqui
 
         // Fim do Algoritmo
-        tempo = System.currentTimeMillis() - tempo;
+        tempo = System.currentTimeMillis() - tempo; // contabilizaçao do tempo
         return tempo;
     }
-    public static boolean verificaOrdenacao(int[] vetor, int n){ // metodo que retorna true, se o vetor esta ordenado em ordem crescente e false se nao estiver
-        boolean teste = true; // condicao inicial
 
-        for(int i=1; i<n; i++){
-            teste = (vetor[i-1]<=vetor[i]); // looping de verificacao
-            if(teste == false)
+    public static boolean verificaOrdenacao(int[] vetor, int n) { // verifica a ordenaçao do vetor
+        boolean teste = false; // condicao inicial
+
+        for (int i = 1; i < n; i++) { // looping de verificacao
+            teste = (vetor[i - 1] <= vetor[i]); // confere se a esta em ordem crescente
+            if (!teste) // se nao ordenado, quebra o laço
                 break;
         }
-        return teste;    // retorno da funcao
+        return teste; // retorno da funcao (true = ordenado; false = erro de ordenaçao)
     }
 }

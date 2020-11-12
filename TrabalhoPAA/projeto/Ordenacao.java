@@ -56,9 +56,25 @@ public class Ordenacao {
         AuxiliarVetor.wait(1); // tempo de espera padrao
         long tempo = System.currentTimeMillis();
         // Algoritmo comeca aqui
-
+        int x = n;
+        for(int i=0; i<n; i++){
+            for(int k=1; k<x; k++){
+                int aux = vetor[k-1];
+                if(aux>vetor[k]){
+                    vetor[k-1] = vetor[k];
+                    vetor[k] = aux;
+                }
+            }
+            x--;
+        }
         // Fim do Algoritmo
         tempo = System.currentTimeMillis() - tempo;
+        if(!verificaOrdenacao(vetor, n)){
+            System.err.println("Erro de ordenacao");
+            System.exit(1);
+        }
+        if(verificaOrdenacao(vetor, n))
+            System.out.println("Ordenação OK");
         return tempo;
 
     }
@@ -82,5 +98,15 @@ public class Ordenacao {
         // Fim do Algoritmo
         tempo = System.currentTimeMillis() - tempo;
         return tempo;
+    }
+    public static boolean verificaOrdenacao(int[] vetor, int n){ // metodo que retorna true, se o vetor esta ordenado em ordem crescente e false se nao estiver
+        boolean teste = true; // condicao inicial
+
+        for(int i=1; i<n; i++){
+            teste = (vetor[i-1]<=vetor[i]); // looping de verificacao
+            if(teste == false)
+                break;
+        }
+        return teste;    // retorno da funcao
     }
 }

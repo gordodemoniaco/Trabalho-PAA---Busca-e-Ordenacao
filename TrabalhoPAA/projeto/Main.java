@@ -8,8 +8,8 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) throws IOException, InterruptedException {
-        final int tamanho_base = 5000; // tamanho_base dos vetores
-        final int tamanho_max = 100000; // tamanho maximo
+        final int tamanho_base = 500; // tamanho_base dos vetores
+        final int tamanho_max = 10000; // tamanho maximo
         int opFuncao = 0; // opcao de execucao do sistema
         Scanner entrada = new Scanner(System.in); // entrada do teclado
         boolean verify = true;

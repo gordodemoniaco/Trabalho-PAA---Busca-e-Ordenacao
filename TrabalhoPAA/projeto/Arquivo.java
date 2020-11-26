@@ -10,7 +10,7 @@ public class Arquivo {
     
     public static void escritor(ArrayList<String> linhas, String tipo) throws IOException {
         String caminho = "TrabalhoPAA/projeto/resultados/";
-        String nome = caminho+tipo+System.currentTimeMillis()+".txt";
+        String nome = caminho+tipo+System.getProperty("user.name")+System.currentTimeMillis()+".txt";
 
         FileWriter arq = new FileWriter(nome);
         PrintWriter gravarArq = new PrintWriter(arq);

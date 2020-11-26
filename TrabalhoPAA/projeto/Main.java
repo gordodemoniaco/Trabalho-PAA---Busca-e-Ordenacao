@@ -22,7 +22,6 @@ public class Main {
 
         System.out.println("Projeto de Busca e Ordenação");
         System.out.println("");
-
         while (verify) {
             System.out.println("1 - Busca | 2 - Ordenação");
             System.out.printf("Opção: ");
@@ -110,7 +109,7 @@ public class Main {
                     
                 }
                 // Gravação em arquivo dos resultados
-                Arquivo.escritor(arquivo, "Busca");
+                Arquivo.escritor(arquivo, "busca");
                 
             }
                 break;

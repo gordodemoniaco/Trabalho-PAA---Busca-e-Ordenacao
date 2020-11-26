@@ -173,7 +173,7 @@ public class Ordenacao {
         AuxiliarVetor.wait(1); // tempo de espera padrao
         long tempo = System.currentTimeMillis(); // inicializa contabilizaçao do tempo
         // Algoritmo comeca aqui
-        vetor = recursivoQuick(vetor, 0, n);
+        vetor = recursivoQuick(vetor, 0, n-1);
 
         // Fim do Algoritmo
         tempo = System.currentTimeMillis() - tempo; // contabilizaçao do tempo

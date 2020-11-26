@@ -6,6 +6,8 @@ public class Ordenacao {
     public static final String bubble = "BubbleSort";
     public static final String merge = "MergeSort";
     public static final String quick = "QuickSort";
+    public static final String erroOrdenacao = "Erro de Ordenação :";
+    public static final String okOrdenacao = "Ordenação Verificada!";
 
     public static String printOpOrdenacao(int opOrdenacao) {
         String tipo_ordenacao = new String();
@@ -34,11 +36,29 @@ public class Ordenacao {
 
     public static long ordenaSelection(int[] vetor, int n) { // SelectionSort
         AuxiliarVetor.wait(1); // tempo de espera padrao
-        long tempo = System.currentTimeMillis();
+        long tempo = System.currentTimeMillis(); // inicializa contabilizaçao do tempo
         // Algoritmo comeca aqui
-
+        for (int i = 0; i < n - 1; i++) {
+            int k = i;
+            for (int j = i + 1; j < n; j++) {
+                if (vetor[j] < vetor[k]) {
+                    k = j;
+                }
+            }
+            int menorNumero = vetor[k];
+            vetor[k] = vetor[i];
+            vetor[i] = menorNumero;
+        }
         // Fim do Algoritmo
         tempo = System.currentTimeMillis() - tempo; // contabilizaçao do tempo
+        // Verificação da Ordenação
+        if (!verificaOrdenacao(vetor, n)) {
+            System.err.println(erroOrdenacao + selection);
+            System.exit(1);
+        }
+        System.out.println(selection + " | " + okOrdenacao);
+        // Fim da verificaçao
+        AuxiliarVetor.wait(1); // tempo de espera padrao
         return tempo;
     }
 
@@ -46,9 +66,25 @@ public class Ordenacao {
         AuxiliarVetor.wait(1); // tempo de espera padrao
         long tempo = System.currentTimeMillis(); // inicializa contabilizaçao do tempo
         // Algoritmo comeca aqui
-
+        for (int i = 1; i < n; i++) {
+            int k = vetor[i];
+            int j = i;
+            while ((j > 0) && (vetor[j - 1] > k)) {
+                vetor[j] = vetor[j - 1];
+                j--;
+            }
+            vetor[j] = k;
+        }
         // Fim do Algoritmo
         tempo = System.currentTimeMillis() - tempo; // contabilizaçao do tempo
+        // Verificação da Ordenação
+        if (!verificaOrdenacao(vetor, n)) {
+            System.err.println(erroOrdenacao + insertion);
+            System.exit(1);
+        }
+        System.out.println(insertion + " | " + okOrdenacao);
+        // Fim da verificaçao
+        AuxiliarVetor.wait(1); // tempo de espera padrao
         return tempo;
     }
 
@@ -69,11 +105,14 @@ public class Ordenacao {
         }
         // Fim do Algoritmo
         tempo = System.currentTimeMillis() - tempo; // contabilizaçao do tempo
-        if (!verificaOrdenacao(vetor, n)) { // se a ordenaçao do vetor estiver errada, sai do programa com erro
-            System.err.println("Erro de ordenacao");
+        // Verificação da Ordenação
+        if (!verificaOrdenacao(vetor, n)) {
+            System.err.println(erroOrdenacao + bubble);
             System.exit(1);
         }
-        System.out.println(bubble + " | Ordenação OK!"); // Impressão de verificaçao
+        System.out.println(bubble + " | " + okOrdenacao);
+        // Fim da verificaçao
+        AuxiliarVetor.wait(1); // tempo de espera padrao
         return tempo;
     }
 
@@ -81,21 +120,102 @@ public class Ordenacao {
         AuxiliarVetor.wait(1); // tempo de espera padrao
         long tempo = System.currentTimeMillis(); // inicializa contabilizaçao do tempo
         // Algoritmo comeca aqui
-
+        vetor = recursivoMerge(vetor, 0, n-1);
         // Fim do Algoritmo
         tempo = System.currentTimeMillis() - tempo; // contabilizaçao do tempo
+        // Verificação da Ordenação
+        if (!verificaOrdenacao(vetor, n)) {
+            System.err.println(erroOrdenacao + merge);
+            System.exit(1);
+        }
+        System.out.println(merge + " | " + okOrdenacao);
+        // Fim da verificaçao
+        AuxiliarVetor.wait(1); // tempo de espera padrao
         return tempo;
 
     }
+    private static int[] recursivoMerge(int[] vetor, int inicio, int fim){
+        if(inicio <fim){
+            int meio = (inicio+fim)/2;
+            
+            vetor = recursivoMerge(vetor, inicio, meio);
+            vetor = recursivoMerge(vetor, meio+1, fim);
 
+            mesclar(vetor, inicio, meio, fim);
+        }
+        return vetor;
+    }
+    private static void mesclar(int[] vetor, int inicio, int meio, int fim){
+        int[] auxiliar = new int[vetor.length];
+
+        for(int i=inicio; i<=fim; i++){
+            auxiliar[i] = vetor[i];
+        }
+        int i=inicio;
+        int j=meio+1;
+
+        for(int k=inicio; k<=fim; k++){
+            if(i>meio){
+                vetor[k] = auxiliar[j++];
+            }
+            else if(j>fim){
+                vetor[k] = auxiliar[i++];
+            }
+            else if(auxiliar[i]<auxiliar[j]){
+                vetor[k] = auxiliar[i++];
+            }
+            else{
+                vetor[k] = auxiliar[j++];
+            }
+        }
+    }
     public static long ordenaQuick(int[] vetor, int n) { // QuickSort
         AuxiliarVetor.wait(1); // tempo de espera padrao
         long tempo = System.currentTimeMillis(); // inicializa contabilizaçao do tempo
         // Algoritmo comeca aqui
+        vetor = recursivoQuick(vetor, 0, n);
 
         // Fim do Algoritmo
         tempo = System.currentTimeMillis() - tempo; // contabilizaçao do tempo
+        // Verificação da Ordenação
+        if (!verificaOrdenacao(vetor, n)) {
+            System.err.println(erroOrdenacao + quick);
+            System.exit(1);
+        }
+        System.out.println(quick + " | " + okOrdenacao);
+        // Fim da verificaçao
+        AuxiliarVetor.wait(1); // tempo de espera padrao
         return tempo;
+    }
+    private static int[] recursivoQuick(int[] vetor, int inicio, int fim){
+        if (inicio<fim){
+            int x = separarQuick(vetor, inicio, fim);
+            recursivoQuick(vetor, inicio, x-1);
+            recursivoQuick(vetor, x+1, fim);
+        }
+        return vetor;
+    }
+    private static int separarQuick(int[] vetor, int inicio, int fim) {
+        int pivo = vetor[inicio];
+        int i = inicio + 1;
+        int f = fim;
+
+        while (i <= f) {
+            if (vetor[i] <= pivo) {
+                i++;
+            } else if (pivo < vetor[f]) {
+                f--;
+            } else {
+                int troca = vetor[f];
+                vetor[i] = vetor[fim];
+                vetor[fim] = troca;
+                i++;
+                f--;
+            }
+        }
+        vetor[inicio] = vetor[f];
+        vetor[f] = pivo;
+        return f;
     }
 
     public static boolean verificaOrdenacao(int[] vetor, int n) { // verifica a ordenaçao do vetor

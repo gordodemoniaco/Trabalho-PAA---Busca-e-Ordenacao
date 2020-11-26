@@ -7,7 +7,7 @@ import java.util.Random;
 
 public class AuxiliarVetor {
 
-    public static int[] criarVetor(int n) {
+    public static int[] criarVetor(int n, boolean ordenado) {
 
         int[] vetor = new int[n]; // instaciando o vetor para o tamanho recebido
         List<Integer> lista = new ArrayList<>(); // arrayList para embaralhar o vetor
@@ -16,7 +16,8 @@ public class AuxiliarVetor {
         for (i = 0; i < n; i++) {
             lista.add(i); // preenchendo a lista com numeros nao repetidos positivos
         }
-        Collections.shuffle(lista, new Random(r.nextInt(200))); // embaralhando a lista aleatoriamente
+        if (!ordenado)
+            Collections.shuffle(lista, new Random(r.nextInt(200))); // embaralhando a lista aleatoriamente   
         for (i = 0; i < n; i++) {
             vetor[i] = lista.get(i); // transferindo a lista embaralhada para um vetor
         }

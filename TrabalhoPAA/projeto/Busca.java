@@ -4,6 +4,7 @@ public class Busca {
 
     public static final String sequencial = "Sequencial";
     public static final String binaria = "Binária";
+    private static final int nao_encontrado = -1;
 
     public static String printOpBusca(int opBusca) {
         String tipo_busca = new String();
@@ -22,14 +23,15 @@ public class Busca {
     }
 
     public static int buscaSequencial(int[] vetor, int n, int teste) { // Busca Sequencial
-        int posicao = -1; // valor padrao para não achar a posição (-1)
+        int posicao = Busca.nao_encontrado; // valor padrao para não achar a posição (-1)
+        AuxiliarVetor.wait(1);
         // Algoritmo comeca aqui
         for (int i = 0; i < n; i++) {
-            posicao = -1; // garantia de valor padrao caso nao ache o elemento
             if (vetor[i] == teste) { // verifica se existe o elemento em cada posicao
-                posicao = i; // se existir, captura a posicao
+                posicao = i;
                 break;
             }
+            posicao = -1; // garantia de valor padrao caso nao ache o elemento
         }
         // System.out.println(n+" | "+posicao); // impressao de teste
         // Fim do Algoritmo
@@ -38,12 +40,24 @@ public class Busca {
     }
 
     public static int buscaBinaria(int[] vetor, int n, int teste) { // Busca Binária
-        int posicao = teste; // valor padrao para não achar a posição (-1)
         AuxiliarVetor.wait(1); // tempo de espera padrão
         // Algoritmo comeca aqui
+        int inferior = 0;
+        int superior = n-1;
 
+        while(inferior<=superior){
+            int meio = (inferior+superior)/2;
+            
+            if(vetor[meio]<teste)
+                inferior = meio+1;
+            else if(vetor[meio]>teste)
+                superior = meio-1;
+            else
+                return meio;
+        }
         // System.out.println(n+" | "+posicao); // impressao de teste
         // Fim do Algoritmo
-        return posicao;
+        return Busca.nao_encontrado;
     }
+
 }

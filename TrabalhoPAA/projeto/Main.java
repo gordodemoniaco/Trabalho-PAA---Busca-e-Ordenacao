@@ -1,18 +1,24 @@
 package projeto;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) throws IOException, InterruptedException {
-        final int tamanho_base = 500; // tamanho_base dos vetores
-        final int tamanho_max = 10000; // tamanho maximo
+        final int tamanho_base = 5000; // tamanho_base dos vetores
+        final int tamanho_max = 100000; // tamanho maximo
         int opFuncao = 0; // opcao de execucao do sistema
         Scanner entrada = new Scanner(System.in); // entrada do teclado
         boolean verify = true;
         Random r = new Random();
+        ArrayList <String> arquivo = new ArrayList<>();
+        final String separador = ",";
+        /*
+            arraylist de String para Busca:  tamanho do vetortempo de criacao|
+        */
 
         System.out.println("Projeto de Busca e Ordenação");
         System.out.println("");
@@ -30,10 +36,10 @@ public class Main {
             case 1: {
                 for (int k = 1; k <= x; k++) {
                     // Criação de vetor
-                    long tempo_criacao = System.currentTimeMillis(); // varaivel pra armazenar o tempo de criacao
+                    long tempo_criacao = System.currentTimeMillis(); // variavel pra armazenar o tempo de criacao
                     int n = k * tamanho_base; // tamanho do vetor
                     int[] vetor = new int[n]; // instancia do vetor
-                    vetor = AuxiliarVetor.criarVetor(n); // cria um vetor
+                    vetor = AuxiliarVetor.criarVetor(n, true); // cria um vetor
                     tempo_criacao = System.currentTimeMillis() - tempo_criacao; // contabiliza o tempo de criacao
 
                     int result_contem; // resultado da posicao onde o elemento foi encontrado
@@ -52,7 +58,7 @@ public class Main {
                         tempo_contem = System.currentTimeMillis(); // inicializa contador de tempo
                         result_contem = Busca.buscaSequencial(vetor, n, teste); // realiza a busca
                         if (result_contem < 0) { // verifica se não deu erro
-                            System.err.println("Elemento Não Encontrado | Erro!"); // caso erro fecha o programa
+                            System.err.println("Elemento Não Encontrado (Sequencial | Contém) | Erro!"); // caso erro fecha o programa
                             System.exit(1);
                         }
                         tempo_contem = System.currentTimeMillis() - tempo_contem; // contabiliza o tempo gasto
@@ -61,7 +67,7 @@ public class Main {
                         tempo_nao_contem = System.currentTimeMillis(); // inicializa contador de tempo
                         result_nao_contem = Busca.buscaSequencial(vetor, n, -1); // realiza a busca
                         if (result_nao_contem >= 0) { // verifica se não deu erro
-                            System.err.println("Elemento Encontrado | Erro!"); // caso erro fecha o programa
+                            System.err.println("Elemento Encontrado (Sequencial | Não Contém) | Erro!"); // caso erro fecha o programa
                             System.exit(1);
                         }
                         tempo_nao_contem = System.currentTimeMillis() - tempo_nao_contem; // contabiliza o tempo gasto
@@ -78,7 +84,7 @@ public class Main {
                         tempo_contem = System.currentTimeMillis(); // inicializa contador de tempo
                         result_contem = Busca.buscaBinaria(vetor, n, teste); // realiza a busca
                         if (result_contem < 0) { // verifica se não deu erro
-                            System.err.println("Elemento Não Encontrado | Erro!"); // caso erro fecha o programa
+                            System.err.println("Elemento Não Encontrado (Binária | Contém) | Erro!"); // caso erro fecha o programa
                             System.exit(1);
                         }
                         tempo_contem = System.currentTimeMillis() - tempo_contem; // contabiliza o tempo gasto
@@ -87,21 +93,25 @@ public class Main {
                         tempo_nao_contem = System.currentTimeMillis(); // inicializa contador de tempo
                         result_nao_contem = Busca.buscaBinaria(vetor, n, -1); // realiza a busca
                         if (result_nao_contem >= 0) { // verifica se não deu erro
-                            System.err.println("Elemento Encontrado | Erro!"); // caso erro fecha o programa
+                            System.err.println("Elemento Encontrado (Binária | Não Contém) | Erro!"); // caso erro fecha o programa
                             System.exit(1);
                         }
                         tempo_nao_contem = System.currentTimeMillis() - tempo_nao_contem; // contabiliza o tempo gasto
 
                         tempo_binaria += tempo_contem + tempo_nao_contem; // acumulador de tempo
                     }
-
                     // tempo_sequencial = tempo_sequencial/100; // media do tempo gasto
                     // tempo_binaria = tempo_binaria/100; // media do tempo gasto
-                    System.out.println("Tamanho do Vetor: " + n + " | Tempo de Criação: " + tempo_criacao
-                            + " <> Tempo Médio da Busca Sequencial: " + tempo_sequencial
-                            + " | Tempo Médio da Busca Binária: " + tempo_binaria);
-                }
 
+                    // Gravação em memória do arquivo resultante
+                    String linha_arquivo = n+separador+tempo_criacao+separador+tempo_sequencial+separador+tempo_binaria; 
+                    // linha do arquivo no formato: tamanho_do_vetor,tempo_de_criacao,tempo_busca_sequencial,tempo_busca_binaria
+                    arquivo.add(linha_arquivo);                    
+                    
+                }
+                // Gravação em arquivo dos resultados
+                Arquivo.escritor(arquivo, "Busca");
+                
             }
                 break;
             case 2: {
@@ -110,7 +120,7 @@ public class Main {
                     long tempo_criacao = System.currentTimeMillis(); // varaivel pra armazenar o tempo de criacao
                     int n = k * tamanho_base; // tamanho do vetor
                     int[] vetor = new int[n]; // instancia do vetor
-                    vetor = AuxiliarVetor.criarVetor(n); // cria um vetor
+                    vetor = AuxiliarVetor.criarVetor(n, false); // cria um vetor
                     tempo_criacao = System.currentTimeMillis() - tempo_criacao; // contabiliza o tempo de criacao
 
                     // Selection Sort

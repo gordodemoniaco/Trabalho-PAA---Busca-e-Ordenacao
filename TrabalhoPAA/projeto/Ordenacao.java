@@ -225,7 +225,7 @@ public class Ordenacao {
         boolean teste = false; // condicao inicial
 
         for (int i = 1; i < n; i++) { // looping de verificacao
-            teste = (vetor[i - 1] <= vetor[i]); // confere se a esta em ordem crescente
+            teste = (vetor[i - 1] < vetor[i]); // confere se a esta em ordem crescente
             if (!teste) // se nao ordenado, quebra o laço
                 break;
         }

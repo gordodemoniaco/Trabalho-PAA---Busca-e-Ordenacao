@@ -8,8 +8,8 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) throws IOException, InterruptedException {
-        final int tamanho_base = 500; // tamanho_base dos vetores
-        final int tamanho_max = 10000; // tamanho maximo
+        final int tamanho_base = 5000; // tamanho_base dos vetores
+        final int tamanho_max = 100000; // tamanho maximo
         int opFuncao = 0; // opcao de execucao do sistema
         Scanner entrada = new Scanner(System.in); // entrada do teclado
         boolean verify = true;
@@ -124,19 +124,19 @@ public class Main {
 
                     // Selection Sort
                     long tempo_selection = Ordenacao.ordenaSelection(vetor, n);
-
+                    AuxiliarVetor.wait(100);
                     // Insertion Sort
                     long tempo_insertion = Ordenacao.ordenaInsertion(vetor, n);
-
+                    AuxiliarVetor.wait(100);
                     // Bubble Sort
                     long tempo_bubble = Ordenacao.ordenaBubble(vetor, n);   
-
+                    AuxiliarVetor.wait(100);
                     // Merge Sort
                     long tempo_merge = Ordenacao.ordenaMerge(vetor, n);
-
+                    AuxiliarVetor.wait(100);
                     // Quick Sort
                     long tempo_quick = Ordenacao.ordenaQuick(vetor, n);
-
+                    AuxiliarVetor.wait(100);
                     // Impressão de verificação
                     System.out.println("Tamanho do Vetor: " + n + " | Tempo de Criação: " + tempo_criacao);
                     System.out.println("Tempo <" + Ordenacao.selection + ">: " + tempo_selection);

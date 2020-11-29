@@ -140,7 +140,7 @@ public class Main {
                     AuxiliarVetor.wait(100);
                     // Quick Sort
                     long tempo_quick=0;
-                    // tempo_quick = Ordenacao.ordenaQuick(vq, n);
+                    tempo_quick = Ordenacao.ordenaQuick(vq, n);
                     AuxiliarVetor.wait(100);
                     // Gravação em memória do arquivo resultante
                     String linha_arquivo = n+separador+tempo_criacao+separador+tempo_selection+separador+tempo_insertion+separador+tempo_bubble+separador+tempo_merge+separador+tempo_quick; 

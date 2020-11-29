@@ -8,8 +8,8 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) throws IOException, InterruptedException {
-        final int tamanho_base = 5000; // tamanho_base dos vetores
-        final int tamanho_max = 100000; // tamanho maximo
+        final int tamanho_base = 50000; // tamanho_base dos vetores
+        final int tamanho_max = 1000000; // tamanho maximo
         int opFuncao = 0; // opcao de execucao do sistema
         Scanner entrada = new Scanner(System.in); // entrada do teclado
         boolean verify = true;
@@ -121,32 +121,44 @@ public class Main {
                     int[] vetor = new int[n]; // instancia do vetor
                     vetor = AuxiliarVetor.criarVetor(n, false); // cria um vetor
                     tempo_criacao = System.currentTimeMillis() - tempo_criacao; // contabiliza o tempo de criacao
-
+                    int[] vs = vetor;
+                    int[] vi = vetor;
+                    int[] vb = vetor;
+                    int[] vm = vetor;
+                    int[] vq = vetor;
                     // Selection Sort
-                    long tempo_selection = Ordenacao.ordenaSelection(vetor, n);
+                    long tempo_selection = Ordenacao.ordenaSelection(vs, n);
                     AuxiliarVetor.wait(100);
                     // Insertion Sort
-                    long tempo_insertion = Ordenacao.ordenaInsertion(vetor, n);
+                    long tempo_insertion = Ordenacao.ordenaInsertion(vi, n);
                     AuxiliarVetor.wait(100);
                     // Bubble Sort
-                    long tempo_bubble = Ordenacao.ordenaBubble(vetor, n);   
+                    long tempo_bubble = Ordenacao.ordenaBubble(vb, n);   
                     AuxiliarVetor.wait(100);
                     // Merge Sort
-                    long tempo_merge = Ordenacao.ordenaMerge(vetor, n);
+                    long tempo_merge = Ordenacao.ordenaMerge(vm, n);
                     AuxiliarVetor.wait(100);
                     // Quick Sort
-                    long tempo_quick = Ordenacao.ordenaQuick(vetor, n);
+                    long tempo_quick=0;
+                    // tempo_quick = Ordenacao.ordenaQuick(vq, n);
                     AuxiliarVetor.wait(100);
+                    // Gravação em memória do arquivo resultante
+                    String linha_arquivo = n+separador+tempo_criacao+separador+tempo_selection+separador+tempo_insertion+separador+tempo_bubble+separador+tempo_merge+separador+tempo_quick; 
+                    // linha do arquivo no formato: tamanho_do_vetor,tempo_de_criacao,tempo_selection,tempo_insertion,tempo_bubble+tempo_merge+tempo_quick
+                    arquivo.add(linha_arquivo);
+
                     // Impressão de verificação
+                    /*
                     System.out.println("Tamanho do Vetor: " + n + " | Tempo de Criação: " + tempo_criacao);
                     System.out.println("Tempo <" + Ordenacao.selection + ">: " + tempo_selection);
                     System.out.println("Tempo <" + Ordenacao.insertion + ">: " + tempo_insertion);
                     System.out.println("Tempo <" + Ordenacao.bubble + ">: " + tempo_bubble);
                     System.out.println("Tempo <" + Ordenacao.merge + ">: " + tempo_merge);
                     System.out.println("Tempo <" + Ordenacao.quick + ">: " + tempo_quick);
-
+                    */
                 }
-
+                // Gravação em arquivo dos resultados
+                Arquivo.escritor(arquivo, "ordenacao");
             }
                 break;
             default:

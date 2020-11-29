@@ -144,6 +144,7 @@ public class Ordenacao {
             vetor = recursivoMerge(vetor, meio+1, fim);
 
             mesclar(vetor, inicio, meio, fim);
+            
         }
         return vetor;
     }
@@ -176,7 +177,6 @@ public class Ordenacao {
         long tempo = System.currentTimeMillis(); // inicializa contabilizaçao do tempo
         // Algoritmo comeca aqui
         vetor = recursivoQuick(vetor, 0, n-1);
-
         // Fim do Algoritmo
         AuxiliarVetor.wait(10); // tempo de espera padrao
         tempo = System.currentTimeMillis() - tempo; // contabilizaçao do tempo
